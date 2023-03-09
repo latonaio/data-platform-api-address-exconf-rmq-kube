@@ -7,8 +7,9 @@
 	"business_partner": 201,
 	"filepath": "/var/lib/aion/Data/rededge_sdc/abcdef.json",
 	"service_label": "ORDERS",
-	"ProductMasterGeneral": {
-		"Product": "A3750"
+	"Address": {
+		"AddressID": 100000,
+		"ValidityEndDate": "9999-12-31"
 	},
 	"api_schema": "DPFMOrdersCreates",
 	"accepter": ["All"],

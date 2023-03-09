@@ -70,7 +70,7 @@ func (e *ExistenceConf) confAddress(input *dpfm_api_input_reader.SDC) *dpfm_api_
 	}
 
 	rows, err := e.db.Query(
-		`SELECT Address 
+		`SELECT AddressID, ValidityEndDate
 		FROM DataPlatformMastersAndTransactionsMysqlKube.data_platform_address_address_data 
 		WHERE (AddressID, ValidityEndDate) = (?, ?);`, exconf.AddressID, exconf.ValidityEndDate,
 	)
@@ -78,6 +78,7 @@ func (e *ExistenceConf) confAddress(input *dpfm_api_input_reader.SDC) *dpfm_api_
 		e.l.Error(err)
 		return &exconf
 	}
+	defer rows.Close()
 
 	exconf.ExistenceConf = rows.Next()
 	return &exconf
